@@ -19,7 +19,16 @@ dotenv.config();
 app.use(bodyParser.json({ limit: "100mb" }));
 app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 app.use(cookieParser());
-app.use(cors());
+// Configuración de CORS
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+    credentials: true
+}));
+
+// Manejar preflight requests
+app.options('*', cors());
 
 // Servir archivos estáticos
 app.use(express.static(__dirname + "/uploads"));
