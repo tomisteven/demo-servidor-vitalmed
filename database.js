@@ -10,7 +10,7 @@ const MONGO_URL = process.env.MONGO_URL;
 // Mongoose 7+ ya no necesita estas opciones, están habilitadas por defecto
 mongoose.connect(MONGO_URL)
   .then(() => {
-    console.log("✅ Conectado a MongoDB correctamente");
+    console.log("✅ Conectado a MongoDB");
     app.listen(PORT, () => {
       console.log("####################");
       console.log("##### API REST ####");
