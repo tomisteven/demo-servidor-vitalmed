@@ -1,5 +1,3 @@
-const { id } = require("@hapi/joi/lib/base");
-const { type } = require("@hapi/joi/lib/extend");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -28,7 +26,7 @@ const PacienteSchema = new Schema({
     {
       fecha: { type: Date, default: Date.now },
       nota: String,
-      author : String
+      author: String
     },
   ],
   doctoresAsignados: [
