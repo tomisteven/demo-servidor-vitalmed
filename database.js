@@ -12,9 +12,9 @@ mongoose.connect(MONGO_URL)
   .then(() => {
     console.log("✅ Conectado a MongoDB correctamente");
     app.listen(PORT, () => {
-      console.log("#####################");
-      console.log("##### API REST #####");
-      console.log("#####################");
+      console.log("####################");
+      console.log("##### API REST ####");
+      console.log("####################");
       console.log(`🚀 Servidor escuchando en el puerto http://localhost:${PORT}`);
     });
   })
