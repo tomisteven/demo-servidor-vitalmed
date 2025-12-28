@@ -1,6 +1,7 @@
 const Doctor = require("../models/Doctor");
 const Paciente = require("../models/Paciente");
 const mongoose = require("mongoose");
+const Turno = require("../models/Turno");
 
 const getPacientes = async (req, res) => {
   try {
@@ -238,6 +239,14 @@ const getPaciente = async (req, res) => {
       return acc;
     }, []);
 
+    const turnos = await Turno.find({ paciente: req.params.id })
+      .populate("doctor", "nombre especialidad")
+      .populate("estudio", "tipo")
+      .populate("paciente", "nombre dni");
+
+
+
+
     // Devolver los documentos agrupados
     if (!paciente) {
       return res.status(404).json({ message: "Paciente no encontrado", ok: false });
@@ -247,6 +256,7 @@ const getPaciente = async (req, res) => {
       paciente,
       documentosAgrupados: documents,
       doctoresAsignados: paciente.doctoresAsignados,
+      turnos,
       message: "Paciente encontrado",
       ok: true,
     });
